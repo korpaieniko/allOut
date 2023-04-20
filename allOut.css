@@ -39,11 +39,16 @@ body {
     /*margin: 0 auto;*/
     top: 50px;
     float: left;
-    width: 35%;
+    width: 33%;
     /*height: auto;*/
+
 }
 #lepesek {
     padding-top: 10px;
+    display: block;
+}
+#hszint{
+    padding-bottom: 10px;
     display: block;
 }
 .lampa{
@@ -97,7 +102,7 @@ body {
     font-size: 16px;
     margin: auto;
     padding: 1px 15px 1px 15px;
-    visibility: hidden;
+    /*visibility: hidden;*/
 
 }
 #szabalyleiras p{
@@ -133,7 +138,7 @@ body {
     /*background-color: #577957;*/
 }
 #szabaly{
-    margin-top: 50px;
+    margin-top: 90px;
     margin-bottom: 50px;
 }
 .gombok:hover{
@@ -147,4 +152,7 @@ body {
     height: 400px;
     position: relative;
     top: 50px;
+    padding-top: 30px;
+
 }
+
