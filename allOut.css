@@ -1,10 +1,22 @@
 html {
-    background-color: aquamarine;
+    background-color: #d0d5aa;
+    font-family: sans-serif , "Helvetica";
+    font-size: 25px;
 }
 body {
     margin: 0 auto;
-    width: 80%;
+    /*width: 90%;*/
+}
 
+#fejlec{
+    position: relative;
+    margin: 0 auto;
+    top: 10px;
+    width: 50%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 45px;
+    font-variant: small-caps;
 }
 
 #jatekter {
@@ -13,11 +25,28 @@ body {
     position: relative;
     background-color: lightgoldenrodyellow;
     border: black 1px solid;
+    border-radius: 5px;
     text-align: center;
     margin: 0 auto;
-    top: 50px;
+    /*top: 50px;*/
+    display: block;
 }
-.gomb {
+
+#kozepso{
+    position: relative;
+    border: black 1px solid;
+    text-align: center;
+    /*margin: 0 auto;*/
+    top: 50px;
+    float: left;
+    width: 35%;
+    /*height: auto;*/
+}
+#lepesek {
+    padding-top: 100px;
+    display: block;
+}
+.lampa{
     position: absolute;
     width: 30px;
     height: 30px;
@@ -31,12 +60,12 @@ body {
     margin: 0 auto;
     z-index: 1;
 }
-.gomb:active{
+.lampa:active{
     /*background-color: coral;*/
     box-shadow: 1px 4px #666;
     transform: translateY(4px);
 }
-.gomb:hover{
+.lampa:hover{
     border: black 2px solid;
 }
 #nyert{
@@ -46,7 +75,7 @@ body {
     width: 200px;
     height: 80px;
     z-index: 5;
-    background-color: lightgoldenrodyellow;
+    background-color: #d5d391;
     border-radius: 3px;
     border: black 2px solid;
     text-align: center;
@@ -54,15 +83,67 @@ body {
     padding: 50px 0 0 0;
     visibility: hidden;
 }
+#szabalyleiras{
+    position: absolute;
+    top: 40px;
+    left: 30px;
+    width: 300px;
+    height: auto;
+    z-index: 5;
+    background-color: #d5d391;
+    border-radius: 3px;
+    border: black 2px solid;
+    text-align: justify;
+    font-size: 16px;
+    margin: auto;
+    padding: 1px 15px 1px 15px;
+    visibility: hidden;
 
+}
+#szabalyleiras p{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
 
+#bal{
+    width: 30%;
+    height: 400px;
+    border: black 2px solid;
+    float: left;
+    position: relative;
+    top: 50px;
+}
 #szintek {
     position: absolute;
     text-align: center;
     margin: 0 auto;
 }
-.szint {
-    /*position: center;*/
+.gombok {
+    border-radius: 5px;
+    border: black 1px solid;
+    cursor: pointer;
     text-align: center;
-    margin: 0 auto;
+    /*margin: 5px;*/
+    padding: 8px;
+    width: 150px;
+    display: block;
+    margin: 10px 10px 10px auto;
+    background-color: #819447;
+    /*background-color: #577957;*/
+}
+#szabaly{
+    margin-top: 70px;
+}
+.gombok:hover{
+    border: black 3px solid;
+}
+
+#jobb{
+    float: left;
+    width: 30%;
+    border: black 2px solid;
+    height: 400px;
+    position: relative;
+    top: 50px;
 }

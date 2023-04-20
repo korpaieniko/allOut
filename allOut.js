@@ -1,22 +1,51 @@
 $(document).ready(function () {
     let gomb;
-    // let vilagit = false;
     let kidb;
     let ki = 'rgb(205, 205, 152)';
     let be = 'rgb(255, 255, 0)';
     let lepesek = 0;
 
-    // let nyert = '<div id="nyert">Szép munka!</div>';
+    for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+            gomb = '<div id="' + i + '' + j + '" class="lampa"></div>';
+
+            $(gomb).appendTo('#jatekter').css({
+                top: 30 + (i * 70),
+                left: 30 + (j * 70)
+            });
+        }
+    }
+
+    //elso szint
+    for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+            $('#'+i+''+j+'').css('background-color', ki);
+        }
+    }
+    lepesek = 0;
+    $('#pontszam').text(lepesek);
+
+    $('#00').css('background-color', be);
+    $('#01').css('background-color', be);
+    $('#03').css('background-color', be);
+    $('#04').css('background-color', be);
+    $('#10').css('background-color', be);
+    $('#12').css('background-color', be);
+    $('#14').css('background-color', be);
+    $('#21').css('background-color', be);
+    $('#22').css('background-color', be);
+    $('#23').css('background-color', be);
+    $('#30').css('background-color', be);
+    $('#32').css('background-color', be);
+    $('#34').css('background-color', be);
+    $('#40').css('background-color', be);
+    $('#41').css('background-color', be);
+    $('#43').css('background-color', be);
+    $('#44').css('background-color', be);
+
 
     for (let i = 0; i < 5; i++) {
         for (let j = 0; j < 5; j++) {
-            gomb ='<div id="'+i+''+j+'" class="gomb"></div>';
-
-            $(gomb).appendTo('#jatekter').css({
-                top: 30+(i*70),
-                left: 30+(j*70)
-            });
-
             $('#'+i+''+j+'').click(function () {
 
                 if($(this).css('background-color') === ki){
@@ -75,8 +104,18 @@ $(document).ready(function () {
         }
     }
 
+    $('#szabaly').click(function (){
+        if($('#szabalyleiras').css('visibility') === 'hidden'){
+            $('#szabalyleiras').css('visibility', 'visible');
+        } else {
+            $('#szabalyleiras').css('visibility', 'hidden');
+        }
+
+    })
+
     $('#elsoSzint').click(function () {
         $('#nyert').css('visibility', 'hidden');
+        $('#szabalyleiras').css('visibility', 'hidden');
         for (let i = 0; i < 5; i++) {
             for (let j = 0; j < 5; j++) {
                 $('#'+i+''+j+'').css('background-color', ki);
@@ -106,6 +145,7 @@ $(document).ready(function () {
 
     $('#masodikSzint').click(function () {
         $('#nyert').css('visibility', 'hidden');
+        $('#szabalyleiras').css('visibility', 'hidden');
         for (let i = 0; i < 5; i++) {
             for (let j = 0; j < 5; j++) {
                 $('#'+i+''+j+'').css('background-color', ki);
@@ -132,6 +172,7 @@ $(document).ready(function () {
 
     $('#harmadikSzint').click(function () {
         $('#nyert').css('visibility', 'hidden');
+        $('#szabalyleiras').css('visibility', 'hidden');
         for (let i = 0; i < 5; i++) {
             for (let j = 0; j < 5; j++) {
                 $('#'+i+''+j+'').css('background-color', ki);
@@ -155,6 +196,7 @@ $(document).ready(function () {
 
     $('#negyedikSzint').click(function () {
         $('#nyert').css('visibility', 'hidden');
+        $('#szabalyleiras').css('visibility', 'hidden');
         for (let i = 0; i < 5; i++) {
             for (let j = 0; j < 5; j++) {
                 $('#'+i+''+j+'').css('background-color', ki);

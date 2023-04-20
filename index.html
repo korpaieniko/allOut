@@ -8,17 +8,43 @@
     <link rel="stylesheet" href="allOut.css">
 </head>
 <body>
-<div id="jatekter">
-    All out
-    <div id="nyert"> Ügyes voltál! </div>
-    <div >Lépések száma: <a id="pontszam">0</a></div>
+
+<div id="fejlec"> All Out</div>
+
+<div id="keret">
+<div id="bal">
+    <div class="gombok" id="szabaly">Szabály</div>
+    <p id="szintek">
+        <div id="elsoSzint" class="szint gombok">1.szint</div>
+        <div id="masodikSzint" class="szint gombok">2.szint</div>
+        <div id="harmadikSzint" class="szint gombok">3.szint</div>
+        <div id="negyedikSzint" class="szint gombok">4.szint</div>
+    </p>
 </div>
 
-<div id="szintek">
-    <button id="elsoSzint" class="szint">1.szint</button>
-    <button id="masodikSzint" class="szint">2.szint</button>
-    <button id="harmadikSzint" class="szint">3.szint</button>
-    <button id="negyedikSzint" class="szint">4.szint</button>
+<div id="kozepso">
+    <div id="jatekter">
+        <div id="nyert"> Ügyes voltál! </div>
+        <div id="szabalyleiras">
+            <p>Játékszabály: </p>
+            A játék célja, hogy a táblán lévő összes lámpát lekapcsoljuk. <br>
+            Egy lámpára kattintva megfordítjuk az állapotát annak és minden szomszédos lámpának egyaránt.
+            Ha egy lámpa világít, akkor kattintás után le fog kapcsolni és fordítva.<br>
+            Ahhoz hogy nyerj, mindegyik lámpát le kell kapcsolnod.
+            Válassz a 4 szint közül és kezd el a játékot.
+            <p>Sok sikert!</p>
+        </div>
+    </div>
+    <div id="lepesek">Lépések száma: <a id="pontszam">0</a></div>
 </div>
+
+<div id="jobb">Ranglista</div>
+
+</div>
+
+<audio autoplay preload='auto' loop>
+    <source src="hatterzene.mp3" type="audio/mpeg" >
+</audio>
+
 </body>
 </html>
