@@ -1,0 +1,68 @@
+html {
+    background-color: aquamarine;
+}
+body {
+    margin: 0 auto;
+    width: 80%;
+
+}
+
+#jatekter {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    background-color: lightgoldenrodyellow;
+    border: black 1px solid;
+    text-align: center;
+    margin: 0 auto;
+    top: 50px;
+}
+.gomb {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: rgb(205, 205, 152);
+    border-radius: 50%;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 1px 6px #999;
+    margin: 0 auto;
+    z-index: 1;
+}
+.gomb:active{
+    /*background-color: coral;*/
+    box-shadow: 1px 4px #666;
+    transform: translateY(4px);
+}
+.gomb:hover{
+    border: black 2px solid;
+}
+#nyert{
+    position: absolute;
+    top: 130px;
+    left: 100px;
+    width: 200px;
+    height: 80px;
+    z-index: 5;
+    background-color: lightgoldenrodyellow;
+    border-radius: 3px;
+    border: black 2px solid;
+    text-align: center;
+    margin: auto;
+    padding: 50px 0 0 0;
+    visibility: hidden;
+}
+
+
+#szintek {
+    position: absolute;
+    text-align: center;
+    margin: 0 auto;
+}
+.szint {
+    /*position: center;*/
+    text-align: center;
+    margin: 0 auto;
+}
