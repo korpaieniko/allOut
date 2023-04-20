@@ -34,7 +34,7 @@ body {
 
 #kozepso{
     position: relative;
-    border: black 1px solid;
+    /*border: black 1px solid;*/
     text-align: center;
     /*margin: 0 auto;*/
     top: 50px;
@@ -43,7 +43,7 @@ body {
     /*height: auto;*/
 }
 #lepesek {
-    padding-top: 100px;
+    padding-top: 10px;
     display: block;
 }
 .lampa{
@@ -107,9 +107,9 @@ body {
 }
 
 #bal{
-    width: 30%;
+    width: 33%;
     height: 400px;
-    border: black 2px solid;
+    /*border: black 2px solid;*/
     float: left;
     position: relative;
     top: 50px;
@@ -133,7 +133,8 @@ body {
     /*background-color: #577957;*/
 }
 #szabaly{
-    margin-top: 70px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 .gombok:hover{
     border: black 3px solid;
@@ -142,7 +143,7 @@ body {
 #jobb{
     float: left;
     width: 30%;
-    border: black 2px solid;
+    /*border: black 2px solid;*/
     height: 400px;
     position: relative;
     top: 50px;
