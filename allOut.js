@@ -57,7 +57,6 @@ $(document).ready(function () {
     }
 
     function konfetti_alap(){
-
         for (let i = 0; i < 15; i++) {
             for (let j = 0; j < 15; j++) {
                 $('#konfetti'+i+''+j+'').css({
@@ -166,8 +165,8 @@ $(document).ready(function () {
                                 width: Math.floor(Math.random() * 7) + 5,
                                 height: Math.floor(Math.random() * 17) + 5,
                             }, 500).animate({
-                                top: 500,
-                                left: 500
+                                top: h/2,
+                                left: w/2
                             }, 500).animate({
                                 top: Math.floor(Math.random() * 500) + 100,
                                 left: Math.floor(Math.random() * 1300) + 100,
@@ -188,9 +187,35 @@ $(document).ready(function () {
                     }).animate({
                         top: 600
                     });
+
+
+                    var nev = prompt("Add meg a neved:", "anonymus");
+                    // eltaroljuk localStorage-ben az aktualis jatekos klikkeleseinek szamat
+                    localStorage.setItem(nev, lepesek);
+
+                    fill_toplist();
                 }
 
             });
+        }
+    }
+
+    function fill_toplist() {
+        // vegigmegyunk a localStorage mentett elemein es egy uj tombbe pakoljuk. asszociativ tomb
+        var data = [];
+        for (var i = 0; i < localStorage.length; i++) {
+            data[i] = [localStorage.key(i), parseInt(localStorage.getItem(localStorage.key(i)))];
+        }
+        // csokkeno sorrendbe rendezzuk az elemeket az elert pontszam alapjan
+        data.sort(function (a, b) {
+            return a[1] - b[1];
+        });
+        $('#lista').text("");
+        // a 10 legtobb pontot elert jatekost jelezzuk ki a listan
+        for (let act_data of data.keys()) {
+            if (act_data < 10) {
+                $('#lista').append(data[act_data][0] + ' : ' + data[act_data][1] + '<br>');
+            }
         }
     }
 
