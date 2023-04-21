@@ -5,12 +5,16 @@ $(document).ready(function () {
     let be = 'rgb(255, 255, 0)';
     let lepesek = 0;
 
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+
     $("#szabalyleiras").animate({
         height: 'toggle'
     }, 2000);
 
     // $('#hatterzene').get(0).play();
-    $('#hatterzene').volume = 0;
+    $('#hatterzene').get(0).volume = 0.2;
+    $('#kapcsolo').get(0).volume = 0.7;
 
     for (let i = 0; i < 5; i++) {
         for (let j = 0; j < 5; j++) {
@@ -21,6 +25,14 @@ $(document).ready(function () {
                 left: 30 + (j * 70)
             });
         }
+    }
+
+    function csiga_alap(){
+        $('#csiga').attr("src","csiga_megy_rem.png");
+        $('#csiga').css({
+            left: 0,
+            top: 600
+        });
     }
 
     //konfetti
@@ -123,6 +135,11 @@ $(document).ready(function () {
                         }
                     }
                 }
+
+                $('#csiga').animate({
+                        left: kidb*40
+                }, 1000);
+
                 if(kidb === 25){
                     // console.log("nyert");
                     $('#nyert').css('visibility', 'visible');
@@ -131,14 +148,32 @@ $(document).ready(function () {
                     //     // 'visibility': 'visible'
                     // }, 2000);
 
+                    $('#csiga').attr("src","csiga_boldog_rem.png");
 
-
+                    $('#csiga').animate({
+                        top: 500
+                    }).animate({
+                        top: 600
+                    }).animate({
+                        top: 500
+                    }).animate({
+                        top: 600
+                    });
                 }
-                // console.log('#'+i+''+j+'');
 
             });
         }
     }
+
+    // if(kidb === 25){
+    //     $('#csiga').animate({
+    //         top: 500
+    //     });
+    // } else {
+    //     $('#csiga').animate({
+    //         left: (w - 90)
+    //     }, 35000);
+    // }
 
     $('#szabaly').click(function (){
         $("#szabalyleiras").animate({
@@ -156,6 +191,7 @@ $(document).ready(function () {
     $('#elsoSzint').click(function () {
         $('#nyert').css('visibility', 'hidden');
         // $('#szabalyleiras').css('visibility', 'hidden');
+        csiga_alap();
         for (let i = 0; i < 5; i++) {
             for (let j = 0; j < 5; j++) {
                 $('#'+i+''+j+'').css('background-color', ki);
@@ -187,6 +223,7 @@ $(document).ready(function () {
 
     $('#masodikSzint').click(function () {
         $('#nyert').css('visibility', 'hidden');
+        csiga_alap()
         // $('#szabalyleiras').css('visibility', 'hidden');
         for (let i = 0; i < 5; i++) {
             for (let j = 0; j < 5; j++) {
@@ -216,6 +253,7 @@ $(document).ready(function () {
 
     $('#harmadikSzint').click(function () {
         $('#nyert').css('visibility', 'hidden');
+        csiga_alap();
         // $('#szabalyleiras').css('visibility', 'hidden');
         for (let i = 0; i < 5; i++) {
             for (let j = 0; j < 5; j++) {
@@ -242,6 +280,7 @@ $(document).ready(function () {
 
     $('#negyedikSzint').click(function () {
         $('#nyert').css('visibility', 'hidden');
+        csiga_alap();
         // $('#szabalyleiras').css('visibility', 'hidden');
         for (let i = 0; i < 5; i++) {
             for (let j = 0; j < 5; j++) {

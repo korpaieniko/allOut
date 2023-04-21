@@ -1,7 +1,12 @@
 html {
-    background-color: #d0d5aa;
+    /*background-color: #d0d5aa;*/
+    background-image: url("hatter.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
     font-family: sans-serif , "Helvetica";
     font-size: 25px;
+
 }
 body {
     margin: 0 auto;
@@ -134,7 +139,8 @@ body {
     width: 150px;
     display: block;
     margin: 10px 10px 10px auto;
-    background-color: #819447;
+    background-color: #b3dd79;
+    /*background-color: #819447;*/
     /*background-color: #577957;*/
 }
 #szabaly{
@@ -154,5 +160,16 @@ body {
     top: 50px;
     padding-top: 30px;
 
+}
+
+#csiga{
+    height: 100px;
+    position: absolute;
+    left: 0;
+    top: 600px;
+    transform: scaleX(1);
+}
+.ford{
+    transform: scaleX(-1);
 }
 
