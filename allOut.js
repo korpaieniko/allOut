@@ -13,8 +13,11 @@ $(document).ready(function () {
     }, 2000);
 
     // $('#hatterzene').get(0).play();
-    $('#hatterzene').get(0).volume = 0.2;
-    $('#kapcsolo').get(0).volume = 0.7;
+    let hatterzene = $('#hatterzene');
+    let kapcsolohang = $('#kapcsolo');
+    $(hatterzene).get(0).volume = 0.5;
+    $(kapcsolohang).get(0).volume = 0.7;
+
 
     for (let i = 0; i < 5; i++) {
         for (let j = 0; j < 5; j++) {
@@ -104,7 +107,8 @@ $(document).ready(function () {
         for (let j = 0; j < 5; j++) {
             $('#'+i+''+j+'').click(function () {
 
-                $('#kapcsolo').get(0).play();
+                $(kapcsolohang).get(0).play();
+                $('#hatterzene').get(0).play();
 
                 if($(this).css('background-color') === ki){
                     $(this).css('background-color', be);
