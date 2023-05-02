@@ -11,7 +11,7 @@
 <body>
 
 <div id="fejlec"> All Out</div>
-
+<div id="flexkontener">
 <div id="bal">
     <div class="gombok" id="szabaly">Szabály</div>
     <p id="szintek">
@@ -20,10 +20,12 @@
         <div id="harmadikSzint" class="szint gombok">3.szint</div>
         <div id="negyedikSzint" class="szint gombok">4.szint</div>
     </p>
+    <div class="gombok" id="megoldas">Megoldás</div>
 </div>
 
 <div id="kozepso">
     <div id="hszint"><a id="hanyadikSzint">0</a></div>
+    <div id="info">Kattints a kijelölt lámpákra</div>
     <div id="jatekter">
         <div id="nyert"> Ügyes voltál! </div>
         <div id="szabalyleiras">
@@ -37,6 +39,8 @@
         </div>
     </div>
     <div id="lepesek">Lépések száma: <a id="pontszam">0</a></div>
+    <div id="ido">Idő: <a id="mp">0</a></div>
+
 </div>
 
 <div id="jobb">
@@ -44,6 +48,7 @@
     <p id="lista"></p>
 </div>
 
+</div>
 
 <img id="csiga" src="csiga_megy_rem.png" alt="csigakep">
 
@@ -51,13 +56,16 @@
     <source src="hatterzene.mp3" type="audio/mpeg" >
 </audio>
 
-<!--autoplay preload='auto' loop-->
-<!--<iframe hidden src="hatterzene.mp3"-->
-<!--        allow="autoplay" ></iframe>-->
-
+<!--<audio autoplay preload='auto' loop id="hatterzene">-->
+<!--    <source src="hatterzene.mp3" type="audio/mpeg" >-->
+<!--</audio>-->
 
 <audio id="kapcsolo">
     <source src="kapcsolo.mp3" type="audio/mpeg" >
+</audio>
+
+<audio id="konfettihang">
+    <source src="konfettihang.mp3" type="audio/mpeg" >
 </audio>
 
 

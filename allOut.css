@@ -22,6 +22,15 @@ body {
     font-variant: small-caps;
 }
 
+#flexkontener{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: 0 auto;
+    /*font-size: 30px;*/
+    /*text-align: center;*/
+}
+
 #jatekter {
     width: 400px;
     height: 400px;
@@ -38,18 +47,27 @@ body {
     position: relative;
     text-align: center;
     top: 50px;
-    float: left;
-    width: 33%;
-
+    /*float: left;*/
+    /*width: 33%;*/
+    flex: 40%;
 }
 #lepesek {
     padding-top: 10px;
-    display: block;
     color: lightgoldenrodyellow;
+    font-size: 22px;
+}
+#ido{
+    color: lightgoldenrodyellow;
+    font-size: 16px;
 }
 #hszint{
-    padding-bottom: 10px;
+    padding-bottom: 5px;
     display: block;
+}
+#info{
+    padding: 0;
+    font-size: 16px;
+    color: red;
 }
 .lampa{
     position: absolute;
@@ -109,12 +127,13 @@ body {
 }
 
 #bal{
-    width: 33%;
+    /*width: 33%;*/
     height: 400px;
     /*border: black 2px solid;*/
-    float: left;
+    /*float: left;*/
     position: relative;
-    top: 50px;
+    top: 15px;
+    flex: 30%;
 }
 #szintek {
     position: absolute;
@@ -142,13 +161,15 @@ body {
 }
 
 #jobb{
-    float: left;
-    width: 30%;
+    /*float: left;*/
+    /*width: 30%;*/
     /*border: black 2px solid;*/
+    flex: 30%;
     height: 400px;
     position: relative;
-    top: 50px;
+    top: 45px;
     padding-top: 30px;
+    padding-left: 10px;
 }
 
 #csiga{

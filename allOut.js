@@ -3,16 +3,20 @@ $(document).ready(function () {
     let kidb;
     let ki = 'rgb(205, 205, 152)';
     let be = 'rgb(255, 255, 0)';
-    let lepesek = 0;
+    let lepesek = 1;
+    let ido = 0;
+    let im;
 
-    var w = window.innerWidth;
-    var h = window.innerHeight;
+    let w = window.innerWidth;
+    let h = window.innerHeight;
+
+    let aktualisSzint = 1;
 
     $("#szabalyleiras").animate({
         height: 'toggle'
     }, 2000);
 
-    // $('#hatterzene').get(0).play();
+
     let hatterzene = $('#hatterzene');
     let kapcsolohang = $('#kapcsolo');
     $(hatterzene).get(0).volume = 0.5;
@@ -45,15 +49,13 @@ $(document).ready(function () {
         for (let j = 0; j < 15; j++) {
             konfetti = '<div class="konfetti" id="konfetti'+i+''+j+'"></div>';
             $(konfetti).appendTo('body').css({
-                // width: Math.floor(Math.random() * 7) + 5,
-                // height: Math.floor(Math.random() * 17) + 5,
                 width: 0,
                 height: 0,
                 position: 'absolute',
                 top: Math.floor(Math.random() * 500) + 100,
-                // top: 0,
                 left: Math.floor(Math.random() * 1300) + 100,
-                'background-color': szinek[Math.floor(Math.random() * szinek.length)]
+                'background-color': szinek[Math.floor(Math.random() * szinek.length)],
+                rotate: Math.floor(Math.random() * 60)-30 +'deg'
             });
         }
 
@@ -64,9 +66,7 @@ $(document).ready(function () {
             for (let j = 0; j < 15; j++) {
                 $('#konfetti'+i+''+j+'').css({
                     width: 0,
-                    height: 0,
-                    top: Math.floor(Math.random() * 500) + 100,
-                    left: Math.floor(Math.random() * 1300) + 100,
+                    height: 0
                 });
             }
         }
@@ -74,41 +74,18 @@ $(document).ready(function () {
 
 
 
-    //elso szint
-    for (let i = 0; i < 5; i++) {
-        for (let j = 0; j < 5; j++) {
-            $('#'+i+''+j+'').css('background-color', ki);
-        }
-    }
-    lepesek = 0;
-    $('#pontszam').text(lepesek);
-    $('#hanyadikSzint').text('Első szint');
-
-    $('#00').css('background-color', be);
-    $('#01').css('background-color', be);
-    $('#03').css('background-color', be);
-    $('#04').css('background-color', be);
-    $('#10').css('background-color', be);
-    $('#12').css('background-color', be);
-    $('#14').css('background-color', be);
-    $('#21').css('background-color', be);
-    $('#22').css('background-color', be);
-    $('#23').css('background-color', be);
-    $('#30').css('background-color', be);
-    $('#32').css('background-color', be);
-    $('#34').css('background-color', be);
-    $('#40').css('background-color', be);
-    $('#41').css('background-color', be);
-    $('#43').css('background-color', be);
-    $('#44').css('background-color', be);
-
+    elsoSzint();
 
     for (let i = 0; i < 5; i++) {
         for (let j = 0; j < 5; j++) {
             $('#'+i+''+j+'').click(function () {
 
                 $(kapcsolohang).get(0).play();
-                $('#hatterzene').get(0).play();
+                $(hatterzene).get(0).play();
+
+                $('#'+i+''+j+'').css('border','none');
+
+                // im = setInterval(idomeres, 1000);
 
                 if($(this).css('background-color') === ki){
                     $(this).css('background-color', be);
@@ -141,10 +118,8 @@ $(document).ready(function () {
                     $(jobbra).css('background-color', ki);
                 }
 
-
                 lepesek++;
                 $('#pontszam').text(lepesek);
-
 
                 kidb=0
                 for (let i = 0; i < 5; i++) {
@@ -157,11 +132,14 @@ $(document).ready(function () {
 
                 $('#csiga').animate({
                         left: kidb*40
-                }, 1000);
+                }, 2000);
 
                 if(kidb === 25){
                     // console.log("nyert");
                     $('#nyert').css('visibility', 'visible');
+                    $('#konfettihang').get(0).play();
+
+                    // clearInterval(im);
 
                     for (let i = 0; i < 15; i++) {
                         for (let j = 0; j < 15; j++) {
@@ -172,10 +150,10 @@ $(document).ready(function () {
                                 top: h/2,
                                 left: w/2
                             }, 500).animate({
-                                top: Math.floor(Math.random() * 500) + 100,
-                                left: Math.floor(Math.random() * 1300) + 100,
+                                top: Math.floor(Math.random() * h) - 15,
+                                left: Math.floor(Math.random() * w) - 15,
                             }, 1000).animate({
-                                top: h
+                                top: h - 25
                             }, 2000);
                         }
                     }
@@ -192,7 +170,6 @@ $(document).ready(function () {
                         top: 600
                     });
 
-
                     var nev = prompt("Add meg a neved:", "anonymus");
                     // eltaroljuk localStorage-ben az aktualis jatekos klikkeleseinek szamat
                     localStorage.setItem(nev, lepesek);
@@ -204,6 +181,7 @@ $(document).ready(function () {
         }
     }
 
+    //NEM JÓ!! pontszámot felülírja
     function fill_toplist() {
         // vegigmegyunk a localStorage mentett elemein es egy uj tombbe pakoljuk. asszociativ tomb
         var data = [];
@@ -223,24 +201,89 @@ $(document).ready(function () {
         }
     }
 
+    function idomeres(){
+        ido++;
+        $('#mp').text(ido);
+        if(kidb === 25){
+            clearInterval(im);
+        }
+    }
+
+    $('#megoldas').click(function (){
+        if (confirm("Biztos megnézed a megoldást?")) {
+            if(aktualisSzint === 1){
+                elsoSzint();
+                $('#info').css('visibility', 'visible');
+                $('#00').css('border','black 2px solid');
+                $('#04').css('border','black 2px solid');
+                $('#22').css('border','black 2px solid');
+                $('#40').css('border','black 2px solid');
+                $('#44').css('border','black 2px solid');
+            } else if(aktualisSzint === 2){
+                masodikSzint();
+                $('#info').css('visibility', 'visible');
+                $('#11').css('border','black 2px solid');
+                $('#13').css('border','black 2px solid');
+                $('#40').css('border','black 2px solid');
+                $('#42').css('border','black 2px solid');
+                $('#44').css('border','black 2px solid');
+            } else if(aktualisSzint === 3){
+                harmadikSzint();
+                $('#info').css('visibility', 'visible');
+                $('#00').css('border','black 2px solid');
+                $('#04').css('border','black 2px solid');
+                $('#20').css('border','black 2px solid');
+                $('#40').css('border','black 2px solid');
+                $('#24').css('border','black 2px solid');
+            } else if(aktualisSzint === 4){
+                negyedikSzint();
+                $('#info').css('visibility', 'visible');
+                $('#10').css('border','black 2px solid');
+                $('#20').css('border','black 2px solid');
+                $('#30').css('border','black 2px solid');
+                $('#31').css('border','black 2px solid');
+                $('#32').css('border','black 2px solid');
+                $('#23').css('border','black 2px solid');
+                $('#13').css('border','black 2px solid');
+                $('#03').css('border','black 2px solid');
+                $('#02').css('border','black 2px solid');
+                $('#01').css('border','black 2px solid');
+            }
+        } else {
+
+        }
+    })
+
+
     $('#szabaly').click(function (){
         $("#szabalyleiras").animate({
             height: 'toggle'
         });
     })
 
-    $('#elsoSzint').click(function () {
+    function szint_alap(){
         $('#nyert').css('visibility', 'hidden');
         csiga_alap();
         konfetti_alap();
+
         for (let i = 0; i < 5; i++) {
             for (let j = 0; j < 5; j++) {
-                $('#'+i+''+j+'').css('background-color', ki);
+                $('#'+i+''+j+'').css({
+                    'background-color': ki,
+                    'border': 'none'
+                });
             }
         }
         lepesek = 0;
         $('#pontszam').text(lepesek);
+        $('#info').css('visibility','hidden');
+        ido = 0;
+    }
 
+    function elsoSzint(){
+        szint_alap();
+
+        aktualisSzint = 1;
         $('#hanyadikSzint').text('Első szint');
 
         $('#00').css('background-color', be);
@@ -260,20 +303,16 @@ $(document).ready(function () {
         $('#41').css('background-color', be);
         $('#43').css('background-color', be);
         $('#44').css('background-color', be);
+    }
+
+    $('#elsoSzint').click(function () {
+        elsoSzint();
     });
 
-    $('#masodikSzint').click(function () {
-        $('#nyert').css('visibility', 'hidden');
-        csiga_alap();
-        konfetti_alap();
-        for (let i = 0; i < 5; i++) {
-            for (let j = 0; j < 5; j++) {
-                $('#'+i+''+j+'').css('background-color', ki);
-            }
-        }
-        lepesek = 0;
-        $('#pontszam').text(lepesek);
+    function masodikSzint(){
+        szint_alap();
 
+        aktualisSzint = 2;
         $('#hanyadikSzint').text('Második szint');
 
         $('#01').css('background-color', be);
@@ -290,20 +329,16 @@ $(document).ready(function () {
         $('#40').css('background-color', be);
         $('#42').css('background-color', be);
         $('#44').css('background-color', be);
+    }
+
+    $('#masodikSzint').click(function () {
+        masodikSzint();
     });
 
-    $('#harmadikSzint').click(function () {
-        $('#nyert').css('visibility', 'hidden');
-        csiga_alap();
-        konfetti_alap();
-        for (let i = 0; i < 5; i++) {
-            for (let j = 0; j < 5; j++) {
-                $('#'+i+''+j+'').css('background-color', ki);
-            }
-        }
-        lepesek = 0;
-        $('#pontszam').text(lepesek);
+    function harmadikSzint(){
+        szint_alap();
 
+        aktualisSzint = 3;
         $('#hanyadikSzint').text('Harmadik szint');
 
         $('#00').css('background-color', be);
@@ -317,20 +352,16 @@ $(document).ready(function () {
         $('#34').css('background-color', be);
         $('#40').css('background-color', be);
         $('#41').css('background-color', be);
+    }
+
+    $('#harmadikSzint').click(function () {
+        harmadikSzint();
     });
 
-    $('#negyedikSzint').click(function () {
-        $('#nyert').css('visibility', 'hidden');
-        csiga_alap();
-        konfetti_alap();
-        for (let i = 0; i < 5; i++) {
-            for (let j = 0; j < 5; j++) {
-                $('#'+i+''+j+'').css('background-color', ki);
-            }
-        }
-        lepesek = 0;
-        $('#pontszam').text(lepesek);
+    function negyedikSzint() {
+        szint_alap();
 
+        aktualisSzint = 4;
         $('#hanyadikSzint').text('Negyedik szint');
 
         $('#02').css('background-color', be);
@@ -345,6 +376,10 @@ $(document).ready(function () {
         $('#40').css('background-color', be);
         $('#41').css('background-color', be);
         $('#42').css('background-color', be);
+    }
+
+    $('#negyedikSzint').click(function () {
+        negyedikSzint();
     });
 
 });
