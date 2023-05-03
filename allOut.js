@@ -1,3 +1,5 @@
+let timer = false;
+
 $(document).ready(function () {
     let gomb;
     let kidb;
@@ -72,7 +74,7 @@ $(document).ready(function () {
         }
     }
 
-
+    // im = setInterval(idomeres, 1000);
 
     elsoSzint();
 
@@ -85,7 +87,11 @@ $(document).ready(function () {
 
                 $('#'+i+''+j+'').css('border','none');
 
-                // im = setInterval(idomeres, 1000);
+                if(timer === false){
+                    im = setInterval(idomeres, 1000);
+                    timer = true;
+                }
+
 
                 if($(this).css('background-color') === ki){
                     $(this).css('background-color', be);
@@ -139,19 +145,20 @@ $(document).ready(function () {
                     $('#nyert').css('visibility', 'visible');
                     $('#konfettihang').get(0).play();
 
-                    // clearInterval(im);
+                    clearInterval(im);
+                    timer = false;
 
                     for (let i = 0; i < 15; i++) {
                         for (let j = 0; j < 15; j++) {
                             $('#konfetti'+i+''+j+'').animate({
                                 width: Math.floor(Math.random() * 7) + 5,
-                                height: Math.floor(Math.random() * 17) + 5,
+                                height: Math.floor(Math.random() * 17) + 5
                             }, 500).animate({
                                 top: h/2,
                                 left: w/2
                             }, 500).animate({
                                 top: Math.floor(Math.random() * h) - 15,
-                                left: Math.floor(Math.random() * w) - 15,
+                                left: Math.floor(Math.random() * w) - 15
                             }, 1000).animate({
                                 top: h - 25
                             }, 2000);
@@ -181,19 +188,19 @@ $(document).ready(function () {
         }
     }
 
-    //NEM JÓ!! pontszámot felülírja
+
     function fill_toplist() {
-        // vegigmegyunk a localStorage mentett elemein es egy uj tombbe pakoljuk. asszociativ tomb
+
         var data = [];
         for (var i = 0; i < localStorage.length; i++) {
             data[i] = [localStorage.key(i), parseInt(localStorage.getItem(localStorage.key(i)))];
         }
-        // csokkeno sorrendbe rendezzuk az elemeket az elert pontszam alapjan
+
         data.sort(function (a, b) {
             return a[1] - b[1];
         });
         $('#lista').text("");
-        // a 10 legtobb pontot elert jatekost jelezzuk ki a listan
+
         for (let act_data of data.keys()) {
             if (act_data < 10) {
                 $('#lista').append(data[act_data][0] + ' : ' + data[act_data][1] + '<br>');
@@ -278,6 +285,8 @@ $(document).ready(function () {
         $('#pontszam').text(lepesek);
         $('#info').css('visibility','hidden');
         ido = 0;
+        $('#mp').text("0");
+        clearInterval(im);
     }
 
     function elsoSzint(){
