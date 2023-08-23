@@ -15,3 +15,6 @@ Extrák:
 * lépések számolása
 * toplista névbeírással, lokális tárolással
 * megoldás
+
+
+https://korpaieniko.github.io/allOut/
